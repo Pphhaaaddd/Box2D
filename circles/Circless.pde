@@ -1,12 +1,11 @@
 class Circle {
-  int w, h, lifespan=200;
+  int size, lifespan=200;
   Body body;
 
   Circle(float x_, float y_) {
 
-    println(x_," ",y_);
-    w = int(random(20, 30));
-    h = int(random(20, 30));
+    size = int(random(20, 30));
+    
     
     //Define body
     BodyDef bd = new BodyDef();
@@ -17,10 +16,9 @@ class Circle {
     body = box2d.createBody(bd);
 
     //Create Shape
-    PolygonShape ps=new PolygonShape();
-    float box2Dw = box2d.scalarPixelsToWorld(w/2+1);
-    float box2Dh = box2d.scalarPixelsToWorld(h/2+1);
-    ps.setAsBox(box2Dw, box2Dh);
+    CircleShape ps=new CircleShape();
+    float box2Dsize = box2d.scalarPixelsToWorld(size/2+1);
+    ps.m_radius = box2Dsize;
 
     //Create Fixture
     FixtureDef fd = new FixtureDef();
@@ -42,12 +40,11 @@ class Circle {
     lifespan --;
     pushMatrix();
     translate(pos.x,pos.y);
-    println(pos.x," ",pos.y);
     rotate(-a);
     fill(127, 127);
     stroke(50);
     rectMode(CENTER);
-    rect(0, 0, w, h);
+    ellipse(0, 0, size, size);
     popMatrix();
   }
 
