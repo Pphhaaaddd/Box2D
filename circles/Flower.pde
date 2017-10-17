@@ -4,7 +4,7 @@ class Flower {
 
   Flower(float x_, float y_) {
 
-    size = 20;
+    size = 10;
     makeBody(x_, y_);
   }
   void makeBody(float x_, float y_) {
@@ -79,8 +79,6 @@ class Flower {
     fill(127);
     rect(0, 0, size/2, size*2/1.5);    
     popMatrix();
-
-
 
     lifespan --;
   }

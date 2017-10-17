@@ -1,20 +1,25 @@
 import shiffman.box2d.*;
+
+import org.jbox2d.common.*;
+import org.jbox2d.dynamics.joints.*;
 import org.jbox2d.collision.shapes.*;
+import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
+import org.jbox2d.dynamics.contacts.*;
 
 Box2DProcessing box2d;
 
-ArrayList<Flower> c;
+ArrayList<Pair> c;
 Shape r;
 float t=0;
 
 void setup() {
-  size(1280, 720);
+  size(640, 480);
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   r = new Shape();
-  c = new ArrayList<Flower>();
+  c = new ArrayList<Pair>();
 }
 
 void draw() {
@@ -25,17 +30,17 @@ void draw() {
   r.display();
 
 
-  for (Flower c : c) {
+  for (Pair c : c) {
     c.display();
   }
   if (mousePressed) {
-    Flower p = new Flower(width/2, 40);
+    Pair p = new Pair(mouseX, mouseY);
     c.add(p);
   }
 
-  for (int i=c.size()-1; i>=0; i--) {
-    Flower temp=c.get(i);
-    if (temp.isDead())
-      c.remove(i);
-  }
+  //for (int i=c.size()-1; i>=0; i--) {
+  //  Pair temp=c.get(i);
+  //  if (temp.isDead())
+  //    c.remove(i);
+  //}
 }

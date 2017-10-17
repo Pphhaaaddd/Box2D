@@ -4,7 +4,7 @@ class Circle {
 
   Circle(float x_, float y_) {
 
-    size = int(random(4, 10));
+    size = int(random(20, 25));
     makeBody(x_, y_);
   }
   void makeBody(float x_, float y_) {
