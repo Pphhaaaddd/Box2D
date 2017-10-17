@@ -1,25 +1,27 @@
-class Circle {
-  int size, lifespan=200;
+class RigidShape {
+  int w,h;
   Body body;
 
-  Circle(float x_, float y_) {
+  RigidShape(float x_, float y_) {
 
-    size = int(random(4, 15));
+    w = width/2;
+    h = 10;
     makeBody(x_, y_);
   }
   void makeBody(float x_, float y_) {
     //Define body
     BodyDef bd = new BodyDef();
-    bd.type = BodyType.DYNAMIC;
+    bd.type = BodyType.STATIC;
     bd.position.set(box2d.coordPixelsToWorld(x_, y_));
 
     //Create Body
     body = box2d.createBody(bd);
 
     //Create Shape
-    CircleShape ps=new CircleShape();
-    float box2Dsize = box2d.scalarPixelsToWorld(size/2+1);
-    ps.m_radius = box2Dsize;
+    PolygonShape ps=new PolygonShape();
+    float box2Dw = box2d.scalarPixelsToWorld(w/2);
+    float box2Dh = box2d.scalarPixelsToWorld(h/2);
+    ps.setAsBox(box2Dw,box2Dh);
 
     //Create Fixture
     FixtureDef fd = new FixtureDef();
@@ -36,22 +38,14 @@ class Circle {
 
   void display() {
     Vec2 pos = box2d.getBodyPixelCoord(body);
-    float a = body.getAngle();
 
-    lifespan --;
     pushMatrix();
     translate(pos.x, pos.y);
-    rotate(-a);
-    fill(127, 127);
-    stroke(50);
+    fill(0);
+    noStroke();
     rectMode(CENTER);
-    ellipse(0, 0, size, size);
+    rect(0, 0, w, h);
     popMatrix();
   }
 
-  boolean isDead() {
-    if (lifespan < 0)
-      return true;
-    return false;
-  }
 }
