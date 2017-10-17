@@ -5,34 +5,36 @@ import org.jbox2d.dynamics.*;
 
 Box2DProcessing box2d;
 
-ArrayList<SomeShape> c;
+ArrayList<Flower> c;
 Shape r;
 float t=0;
 
 void setup() {
-  size(400, 300);
+  size(1280, 720);
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   r = new Shape();
-  c = new ArrayList<SomeShape>();
+  c = new ArrayList<Flower>();
 }
 
 void draw() {
   box2d.step();
   background(255);
-  
+
   //Display the Chain Shape
   r.display();
 
 
-  for (SomeShape c : c) {
+  for (Flower c : c) {
     c.display();
   }
-  SomeShape p = new SomeShape(width/2, 40);
-  c.add(p);
+  if (mousePressed) {
+    Flower p = new Flower(width/2, 40);
+    c.add(p);
+  }
 
   for (int i=c.size()-1; i>=0; i--) {
-    SomeShape temp=c.get(i);
+    Flower temp=c.get(i);
     if (temp.isDead())
       c.remove(i);
   }
