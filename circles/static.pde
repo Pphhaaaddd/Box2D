@@ -1,5 +1,5 @@
 class RigidShape {
-  int w,h;
+  int w, h;
   Body body;
 
   RigidShape(float x_, float y_) {

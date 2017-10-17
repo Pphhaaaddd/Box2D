@@ -6,19 +6,25 @@ import org.jbox2d.dynamics.*;
 Box2DProcessing box2d;
 
 ArrayList<Circle> c;
+Shape r;
+float t=0;
 
 void setup() {
   size(400, 300);
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
-
+  r = new Shape();
   c = new ArrayList<Circle>();
 }
 
 void draw() {
   box2d.step();
-
   background(255);
+  
+  //Display the Chain Shape
+  r.display();
+
+
   for (Circle c : c) {
     c.display();
   }

@@ -1,10 +1,10 @@
 class Circle {
-  int size, lifespan=200;
+  int size, lifespan=10000;
   Body body;
 
   Circle(float x_, float y_) {
 
-    size = int(random(4, 15));
+    size = int(random(4, 10));
     makeBody(x_, y_);
   }
   void makeBody(float x_, float y_) {
@@ -32,6 +32,10 @@ class Circle {
 
     //5. Attach Shape to body with fixture
     body.createFixture(fd);
+    
+    // Give it some initial random velocity
+    body.setLinearVelocity(new Vec2(random(-5, 5), random(2, 5)));
+    body.setAngularVelocity(random(-5, 5));
   }
 
   void display() {
