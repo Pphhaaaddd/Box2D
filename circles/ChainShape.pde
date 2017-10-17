@@ -3,10 +3,10 @@ class Shape {
   Body body;
 
   Shape() {
-    int size=100;
+    int size=1000;
     surface = new ArrayList<Vec2>();
     for (int i=0; i<size; i++) {
-      surface.add(new Vec2(map(i,0,size,0,width), map(noise(i/2),0,1,height*2/4,height*4/6)));
+      surface.add(new Vec2(map(i,0,size,0,width), map(noise(PI*i/400),0,1,height*3/4,height*9/10)));
     }
     makeBody();
   }
