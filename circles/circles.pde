@@ -5,7 +5,7 @@ import org.jbox2d.dynamics.*;
 
 Box2DProcessing box2d;
 
-ArrayList<Circle> c;
+ArrayList<SomeShape> c;
 Shape r;
 float t=0;
 
@@ -14,7 +14,7 @@ void setup() {
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   r = new Shape();
-  c = new ArrayList<Circle>();
+  c = new ArrayList<SomeShape>();
 }
 
 void draw() {
@@ -25,14 +25,14 @@ void draw() {
   r.display();
 
 
-  for (Circle c : c) {
+  for (SomeShape c : c) {
     c.display();
   }
-  Circle p = new Circle(width/2, 40);
+  SomeShape p = new SomeShape(width/2, 40);
   c.add(p);
 
   for (int i=c.size()-1; i>=0; i--) {
-    Circle temp=c.get(i);
+    SomeShape temp=c.get(i);
     if (temp.isDead())
       c.remove(i);
   }
